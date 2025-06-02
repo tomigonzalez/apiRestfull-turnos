@@ -1,0 +1,3 @@
+export const {
+    SECRET_JWT_KEY='9655aeeb8960a53bdb5dee1667c19f160449d466eaed2ceb91c841239aeb337b096d490b768d453f1564e3d5ec4220743329'
+} = process.env

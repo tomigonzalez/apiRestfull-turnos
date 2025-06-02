@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+.yarn/
+
+# Build artifacts
+dist/
+build/
+*.js.map # Source maps generados por TypeScript
+*.d.ts # Archivos de declaración TypeScript si no los necesitas en el repo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor/OS specific
+.vscode/ # VS Code specific settings
+.idea/ # WebStorm/IntelliJ specific settings
+*.swp
+.DS_Store # macOS specific
+Thumbs.db # Windows specific
+
+# Logs
+logs/
+*.log
+
+# Test reports
+coverage/
+
+# Misc
+.cache/
