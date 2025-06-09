@@ -4,6 +4,7 @@ import { Router } from 'express';
 
 import { loginUser, logoutUser, refreshToken, registerUser } from '../controllers/userControllers';
 import agendaRouter from './agendaRouter';
+import reservaRouter from './reservaRouter';
 
 const routerUsuario = Router();
 
@@ -21,5 +22,7 @@ routerUsuario.post('/refresh-token', refreshToken);
 //ROUTES AGENDA
 routerUsuario.use("/agenda",agendaRouter );
 
+//ROUTES RESERVA
+routerUsuario.use("/reserva",reservaRouter);
 export default routerUsuario;
 

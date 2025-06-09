@@ -1,48 +1,34 @@
-import mongoose from 'mongoose';
+// models/Agenda.ts
+import mongoose, { Schema, model, Model } from "mongoose";
+import { IAgenda } from "../types/agenda";
 
-const agendaSchema = new mongoose.Schema({
-  barberiaId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Barberia', // O "Usuario" si es un admin
-    required: true,
-    unique: true
-  },
-  nombreBarberia: {
-    type: String,
-    required: true
-  },
-  telefono: {
-    type: String,
-    required: true
-  },
-  direccion: {
-    type: String,
-    required: true
-  },
-  redesSociales: {
-    type: String, // podés usar un string libre (link) o convertirlo en objeto si después querés IG, FB, etc.
-  },
-
-  diasAtencion: [String], // ['Lunes', 'Martes', 'Miércoles']
-  
-  horarios: [
-    {
-      desde: String, // "09:00"
-      hasta: String  // "13:00"
+const agendaSchema = new Schema<IAgenda>(
+  {
+    barberiaId: {
+      type: Schema.Types.ObjectId,
+      ref: "Barberia",
+      required: true,
+      unique: true,
     },
-    {
-      desde: String, // "15:00"
-      hasta: String  // "19:00"
-    }
-  ],
+    nombreBarberia: { type: String, required: true },
+    telefono: { type: String, required: true },
+    direccion: { type: String, required: true },
+    redesSociales: String,
+    diasAtencion: [String],
+    horarios: [
+      {
+        desde: String,
+        hasta: String,
+      },
+    ],
+    duracionTurno: { type: Number, required: true },
+    tiempoEntreTurnos: { type: Number, required: true },
+    minAnticipacionDias: { type: Number, required: true },
+    maxAnticipacionDias: { type: Number, required: true },
+    barberos: [String],
+  },
+  { timestamps: true }
+);
 
-  duracionTurno: Number, // en minutos
-  tiempoEntreTurnos: Number, // en minutos, opcional
-  minAnticipacionDias: Number,
-  maxAnticipacionDias: Number,
-  barberos: [String]
-}, {
-  timestamps: true
-});
-
-export default mongoose.model('Agenda', agendaSchema);
+const Agenda: Model<IAgenda> = model<IAgenda>("Agenda", agendaSchema);
+export default Agenda;
